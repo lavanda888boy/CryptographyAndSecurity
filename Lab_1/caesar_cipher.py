@@ -24,9 +24,28 @@ class CaesarCipher:
         return decrypted_message
 
 
-    def tranformAlphabet(self):
+    def tranformAlphabet(self, cipher_complexity: str, crypto_pattern: str):
         new_alphabet = [None] * len(self.alphabet)
 
+        if cipher_complexity == 'permutative':
+            used_letters = set()
+            
+            j = 0
+            index = 0
+            while j < len(crypto_pattern):
+                if crypto_pattern[j] not in used_letters:
+                    used_letters.add(crypto_pattern[j])
+                    new_alphabet[index] = crypto_pattern[j]
+                    index += 1
+                
+                j += 1
+            
+            while index < len(self.alphabet):
+                for k in range(len(self.alphabet)):
+                    if self.alphabet[k] not in used_letters:
+                        new_alphabet[index] = self.alphabet[k]
+                        index += 1
+                        
         for i in range(len(self.alphabet)):
             new_alphabet[i] = self.alphabet[(i + self.key) % len(self.alphabet)]
 
