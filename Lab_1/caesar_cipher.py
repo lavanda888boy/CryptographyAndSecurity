@@ -24,7 +24,7 @@ class CaesarCipher:
         return decrypted_message
 
 
-    def tranformAlphabet(self):
+    def transformAlphabet(self):
         new_alphabet = [None] * len(self.alphabet)
 
         for i in range(len(self.alphabet)):
