@@ -29,7 +29,6 @@ class CaesarCipher:
 
         for i in range(len(self.alphabet)):
             new_alphabet[i] = self.alphabet[(i + self.key) % len(self.alphabet)]
-        print(new_alphabet)
 
         return new_alphabet
     
@@ -54,10 +53,10 @@ class CaesarCipher:
                     permuted_alphabet[index] = self.alphabet[k]
                     index += 1
 
-        print(permuted_alphabet)
+        print(f'Permuted alphabet: {permuted_alphabet}')
         new_alphabet = [None] * len(self.alphabet)
         for i in range(len(self.alphabet)):
             new_alphabet[i] = permuted_alphabet[(i + self.key) % len(self.alphabet)]
-        print(new_alphabet)
+        print(f'Transformed alphabet: {new_alphabet}')
 
         return new_alphabet

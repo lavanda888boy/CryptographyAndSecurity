@@ -26,7 +26,7 @@ def main():
     if cipher_complexity == 'p':
         n_alph = cc.transformAlphabetWithPermutations(permutation_key.upper())
     else:
-        n_alph = cc.transformAlphabet(permutation_key.upper())    
+        n_alph = cc.transformAlphabet()    
         
     if operation == 'e':
         print(cc.encryptMessage(message_copy, n_alph))
