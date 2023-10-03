@@ -9,7 +9,7 @@ def main():
         key = input("Enter a word of no less than 7 latin characters: ")
     
     message = input("Enter the message containing only romanian letters A-Z or a-z: ")
-    while not re.match(r'[A-Za-zĂÎȘȚ]+', message):
+    while re.search(r'[^A-Za-zĂÎȘȚăîșț ]+', message):
         message = input("Enter the message containing only romanian letters A-Z or a-z: ")
 
     message_copy = re.sub(r'\s', '', message.upper())

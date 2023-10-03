@@ -16,7 +16,7 @@ def main():
         key = int(input("Introduce a valid key from 1 to 25: "))
 
     message = input("Enter the message containing only letters A-Z or a-z: ")
-    while not re.match(r'[A-Za-z]+', message):
+    while re.search(r'[^A-Za-z ]+', message):
         message = input("Enter the message containing only letters A-Z or a-z: ")
 
     message_copy = re.sub(r'\s', '', message.upper())
