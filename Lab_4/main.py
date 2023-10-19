@@ -43,14 +43,17 @@ def main():
     option = input('Select the option to generate K+ (randomly-r, manually-m): ')
     if option == 'r':
         permuted_key = re.sub(r'[\[\]]', r'', str(random.randint(2, size=56)))
-        print(permuted_key)
+        print(f'Randomly generated key: {permuted_key}')
     else:
         permuted_key = input('Introduce 56 bits permuted key: ')
     
-    block_number = int(input('Introduce the number of block i to obtain Ci and Di: '))
+    block_number = int(input('Introduce the number of block i (0-16) to obtain Ci and Di: '))
+    while not ((block_number >= 0) and (block_number <= 16)):
+        block_number = int(input('Introduce the number of block i (0-16) to obtain Ci and Di: '))
+
     C, D = obtain_key_blocks(shifts, permuted_key, block_number)
-    print(C)
-    print(D)
+    print(f'C{block_number} = {C}')
+    print(f'D{block_number} = {D}')
 
 
 if __name__ == '__main__':
