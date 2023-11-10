@@ -30,7 +30,7 @@ class ElGamal:
 
     
     def to_string(self):
-        print('ElGamal parameters:\n')
+        print('El Gamal parameters:\n')
         print(f'p = {self.p}\n')
         print(f'g = {self.g}\n')
         print(f'public_a = {self.public_a}\n')
