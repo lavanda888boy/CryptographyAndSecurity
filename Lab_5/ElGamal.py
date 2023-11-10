@@ -1,4 +1,5 @@
 from random import randint
+from sympy import mod_inverse
 
 class ElGamal:
 
@@ -11,4 +12,28 @@ class ElGamal:
         self.private_a = randint(2, self.p - 2)
         self.public_a = pow(self.g, self.private_a, self.p)
 
-        self.masking_key = pow(self.public_b, self.private_a, self.p)
+
+    def encrypt_message(self, message: str) -> int:
+        hex_message = message.encode('utf-8').hex()
+        int_message = int(hex_message, 16)
+        masking_key = pow(self.public_b, self.private_a, self.p)
+
+        return (int_message * masking_key) % self.p
+
+    
+    def decrypt_message(self, enc_message: int) -> str:
+        masking_key = pow(self.public_a, self.private_b, self.p)
+        masking_inverse = mod_inverse(masking_key, self.p)
+        dec_int_message = (enc_message * masking_inverse) % self.p
+
+        return bytes.fromhex(hex(dec_int_message)[2:]).decode('utf-8')
+
+    
+    def to_string(self):
+        print('ElGamal parameters:\n')
+        print(f'p = {self.p}\n')
+        print(f'g = {self.g}\n')
+        print(f'public_a = {self.public_a}\n')
+        print(f'private_a = {self.private_a}\n')
+        print(f'public_b = {self.public_b}\n')
+        print(f'private_b = {self.private_b}\n')

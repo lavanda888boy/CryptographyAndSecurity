@@ -31,20 +31,21 @@ class RSA:
         return mod_inverse(self.public_key[1], self.phi)
 
 
-    def encrypt_message(self, message: str):
+    def encrypt_message(self, message: str) -> int:
         hex_message = message.encode('utf-8').hex()
         int_message = int(hex_message, 16)
         
         return pow(int_message, self.public_key[1], self.public_key[0])
 
 
-    def decrypt_message(self, enc_message: int):
+    def decrypt_message(self, enc_message: int) -> str:
         dec_int_message = pow(enc_message, self.private_key, self.public_key[0])
 
         return bytes.fromhex(hex(dec_int_message)[2:]).decode('utf-8')
 
     
     def to_string(self):
+        print('RSA parameters:\n')
         print(f'p = {self.p}\n')
         print(f'q = {self.q}\n')
         print(f'phi = {self.phi}\n')
