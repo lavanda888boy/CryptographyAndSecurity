@@ -1,6 +1,6 @@
 from RSA import RSA
 from ElGamal import ElGamal
-from DiffieHelman import DiffieHelman
+from DiffieHellman import DiffieHellman
 
 from sys import exit
 
@@ -14,7 +14,7 @@ def main():
     elif option == 2:
         algorithm = ElGamal()
     elif option == 3:
-        algorithm = DiffieHelman()
+        algorithm = DiffieHellman()
     else:
         exit('Invalid option!')
 
