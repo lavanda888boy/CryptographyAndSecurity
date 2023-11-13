@@ -6,7 +6,7 @@ from sys import exit
 
 
 def main():
-    option = int(input('Choose the algorithm you would like to test (1 - RSA, 2 - El Gamal, 3 - Diffie-Helman): '))
+    option = int(input('Choose the algorithm you would like to test (1 - RSA, 2 - El Gamal, 3 - Diffie-Hellman): '))
 
     algorithm = None
     if option == 1:
