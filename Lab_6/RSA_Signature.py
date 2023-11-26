@@ -7,7 +7,7 @@ class RSA_Signature(RSA):
         super().__init__()
 
 
-    def digest_messsage(self, message: str) -> int:
+    def digest_message(self, message: str) -> int:
         h = MD2.new()
         h.update(message.encode('utf-8'))
         int_digest = int(h.hexdigest(), 16)
@@ -16,11 +16,11 @@ class RSA_Signature(RSA):
 
     
     def create_signature(self, message: str) -> int:
-        return pow(self.digest_messsage(message), self.private_key, self.public_key[0])
+        return pow(self.digest_message(message), self.private_key, self.public_key[0])
     
 
     def validate_message(self, message: str, signature: int) -> bool:
-        int_digest = self.digest_messsage(message)
+        int_digest = self.digest_message(message)
         decrypted_signature = pow(signature, self.public_key[1], self.public_key[0])
 
         if int_digest == decrypted_signature:
