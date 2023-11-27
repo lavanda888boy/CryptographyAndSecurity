@@ -3,7 +3,12 @@ from ElGamal_Signature import ElGamal_Signature
 
 
 def main():
-    message = 'hello'
+    message = ''
+    with open('message.txt', 'r') as file:
+        message = file.read()
+
+    print(f'Message: {message}\n')
+
     option = int(input('Choose the digital signature algorithm (1-RSA, 2-ElGamal): '))
 
     if option == 1:
