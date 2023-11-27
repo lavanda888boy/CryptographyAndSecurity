@@ -4,8 +4,8 @@ from math import gcd
 class RSA:
 
     def generate_primes(self):
-        p = randprime(10**307, 10**308)
-        q = randprime(10**307, 10**308)
+        p = randprime(10**461, 10**462)
+        q = randprime(10**461, 10**462)
         return p, q
     
     
