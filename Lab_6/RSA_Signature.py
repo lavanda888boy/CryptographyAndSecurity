@@ -15,12 +15,13 @@ class RSA_Signature(RSA):
         return int_digest
 
     
-    def create_signature(self, message: str) -> int:
+    def compute_signature(self, message: str) -> int:
         return pow(self.digest_message(message), self.private_key, self.public_key[0])
     
 
-    def validate_message(self, message: str, signature: int) -> bool:
+    def validate_signature(self, message: str, signature: int) -> bool:
         int_digest = self.digest_message(message)
+        print(f'Digested message: {int_digest}\n')
         decrypted_signature = pow(signature, self.public_key[1], self.public_key[0])
 
         if int_digest == decrypted_signature:

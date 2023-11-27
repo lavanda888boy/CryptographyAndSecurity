@@ -17,7 +17,7 @@ class ElGamal_Signature(ElGamal):
 
     
     def compute_r(self):
-        return pow(self.g, self.k, self.p - 1)
+        return pow(self.g, self.k, self.p)
 
     
     def __init__(self):
@@ -38,3 +38,15 @@ class ElGamal_Signature(ElGamal):
         int_digest = self.digest_message(message)
 
         return (mod_inverse(self.k, self.p - 1) * (int_digest - self.private_a * self.r)) % (self.p - 1)
+    
+
+    def validate_signature(self, message: str, signature: int) -> bool:
+        int_digest = self.digest_message(message)
+        print(f'Digested message: {int_digest}\n')
+        v1 = (pow(self.public_a, self.r, self.p) * pow(self.r, signature, self.p)) % self.p
+        v2 = pow(self.g, int_digest, self.p)
+
+        if v1 == v2:
+            return True
+        else:
+            return False
