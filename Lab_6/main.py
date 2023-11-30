@@ -19,7 +19,7 @@ def main():
     else:
         elgamal = ElGamal_Signature()
         signature = elgamal.compute_signature(message)
-        print(f'\nSignature: {signature}')
+        print(f'\nSignature: {signature}\n')
         print(f'Validation result: {elgamal.validate_signature(message, signature)}')
 
 
